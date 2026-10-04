@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+:root {
+  --background: #030307;
+  --foreground: #ffffff;
+  --neon-cyan: #00f0ff;
+  --neon-blue: #0044ff;
+  --neon-dark-bg: #05070f;
+  --neon-card-bg: #090d1a;
+  --neon-input-bg: #0e1326;
+  --text-muted: #8fa0dd;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Общие стили для страниц-оболочек */
+.neon-main-layout {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+.neon-app-container {
+  height: 100vh;
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--neon-dark-bg);
+  display: grid;
+  grid-template-rows: 60px auto;
+  box-shadow: 0 0 50px rgba(0, 240, 255, 0.15), 0 0 100px rgba(0, 68, 255, 0.1); 
+  position: relative;
+  border-left: 2px solid rgba(0, 240, 255, 0.2);
+  border-right: 2px solid rgba(0, 240, 255, 0.2);
+}
+
+.neon-app-header {
+  display: grid;
+  grid-template-columns: 60px 60px auto 60px;
+  border-bottom: 2px solid var(--neon-cyan);
+  box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+  align-items: center;
+  background-color: #080c1a;
+  z-index: 10;
+}
+
+.neon-header-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* Интерактивные элементы (кнопки-ссылки) */
+.neon-btn-link {
+  background-color: transparent;
+  color: var(--neon-cyan);
+  text-decoration: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 5px;
+  height: 40px;
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 15px var(--neon-cyan), inset 0 0 8px rgba(0, 240, 255, 0.5);
+  font-weight: 900;
+  text-shadow: 0 0 8px var(--neon-cyan);
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+.neon-btn-link:hover {
+  background-color: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 25px var(--neon-cyan), inset 0 0 12px rgba(0, 240, 255, 0.7);
+}
+
+/* Стили для Списка Контактов (Второй файл) */
+.neon-contacts-layout {
+  display: grid;
+  transition: grid-template-columns 0.4s ease;
+  height: 100%;
+}
+
+.neon-sidebar {
+  background-color: #060914;
+  overflow: hidden;
+  transition: border-right 0.3s ease;
+}
+
+.neon-sidebar-active {
+  border-right: 2px solid var(--neon-cyan);
+  box-shadow: 5px 0 15px rgba(0, 240, 255, 0.1);
+}
+
+.neon-contact-card {
+  height: 70px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 70px auto;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.neon-contact-card:hover {
+  background: rgba(0, 68, 255, 0.15);
+}
+
+.neon-avatar {
+  height: 100%;
+  width: 100%;
+  background-color: var(--neon-card-bg);
+  color: var(--neon-cyan);
+  font-weight: 700;
+  text-shadow: 0 0 5px var(--neon-cyan);
+  border-right: 1px solid rgba(0, 240, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.neon-contact-name {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 15px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.neon-contact-card:hover .neon-contact-name {
+  color: #ffffff;
+  text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+/* Стили для форм авторизации и регистрации (Третий файл) */
+.neon-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 100%;
+  box-sizing: border-box; 
+  background: radial-gradient(circle at center, #0b112c 0%, #05070f 100%);
+}
+
+.neon-form {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.neon-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.neon-input-group label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-shadow: 0 0 3px rgba(0, 68, 255, 0.5);
+}
+
+.neon-input {
+  height: 45px;
+  padding: 0 12px;
+  background-color: var(--neon-input-bg);
+  border: 2px solid var(--neon-blue);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.neon-input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan), inset 0 0 6px rgba(0, 240, 255, 0.3);
+}
+
+.neon-input-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+.neon-input-row .neon-input-group:first-child { flex: 1; }
+.neon-input-row .neon-input-group:last-child { flex: 2; }
+
+.neon-gender-container {
+  position: relative;
+}
+
+.neon-gender-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.neon-gender-trigger .arrow {
+  font-size: 0.7rem;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 4px var(--neon-cyan);
+}
+
+.neon-gender-dropdown {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background-color: var(--neon-card-bg);
+  border: 2px solid var(--neon-cyan);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+  padding: 5px 0;
+  margin: 0;
+  list-style: none;
+  z-index: 99;
+}
+
+.neon-gender-dropdown li {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+
+.neon-gender-dropdown li:hover {
+  background-color: rgba(0, 240, 255, 0.1);
+  color: var(--neon-cyan);
+  text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.neon-submit-btn {
+  height: 45px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--neon-cyan);
+  text-shadow: 0 0 5px var(--neon-cyan);
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.neon-submit-btn:hover:not(:disabled) {
+  background-color: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 25px var(--neon-cyan), inset 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+.neon-submit-btn:disabled {
+  background-color: #121624;
+  border-color: #222a45;
+  color: #444b6e;
+  box-shadow: none;
+  text-shadow: none;
+  cursor: not-allowed;
+}
+
+.neon-form-footer {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.neon-form-link {
+  color: var(--neon-cyan);
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-shadow: 0 0 3px var(--neon-cyan);
+  display: inline-block;
+}
+
+.neon-form-link:hover {
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.neon-requirements {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  line-height: 1.3;
+  font-weight: 600;
+}
